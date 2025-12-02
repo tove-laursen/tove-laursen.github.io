@@ -402,6 +402,9 @@
 		
 				var a, e, x, i;
 		
+				// Trigger "startComponents" custom event.
+					$body.dispatchEvent(new CustomEvent('startComponents', { detail: { parent: parent } }));
+		
 				// IFRAMEs.
 		
 					// Get list of unloaded IFRAMEs.
@@ -511,6 +514,9 @@
 			unloadElements = function(parent) {
 		
 				var a, e, x, i;
+		
+				// Trigger "stopComponents" custom event.
+					$body.dispatchEvent(new CustomEvent('stopComponents', { detail: { parent: parent } }));
 		
 				// IFRAMEs.
 		
@@ -821,7 +827,7 @@
 		
 					var section;
 		
-					section = $('#main > .inner > section.active').nextElementSibling;
+					section = $('.site-main > .inner > section.active').nextElementSibling;
 		
 					if (!section || section.tagName != 'SECTION')
 						return;
@@ -833,7 +839,7 @@
 		
 					var section;
 		
-					section = $('#main > .inner > section.active').previousElementSibling;
+					section = $('.site-main > .inner > section.active').previousElementSibling;
 		
 					if (!section || section.tagName != 'SECTION')
 						return;
@@ -845,7 +851,7 @@
 		
 					var section;
 		
-					section = $('#main > .inner > section:first-of-type');
+					section = $('.site-main > .inner > section:first-of-type');
 		
 					if (!section || section.tagName != 'SECTION')
 						return;
@@ -857,7 +863,7 @@
 		
 					var section;
 		
-					section = $('#main > .inner > section:last-of-type');
+					section = $('.site-main > .inner > section:last-of-type');
 		
 					if (!section || section.tagName != 'SECTION')
 						return;
@@ -928,7 +934,7 @@
 								locked = true;
 		
 							// Clear index URL hash.
-								if (location.hash == '#home')
+								if (location.hash == '#about')
 									history.replaceState(null, null, '#');
 		
 							// Get options.
@@ -958,7 +964,7 @@
 										}
 		
 								// Deactivate.
-									currentSection = $('#main > .inner > section:not(.inactive)');
+									currentSection = $('.site-main > .inner > section:not(.inactive)');
 									currentSection.classList.add('inactive');
 									currentSection.classList.remove('active');
 									currentSection.style.display = 'none';
@@ -1053,7 +1059,7 @@
 								id = section.id.replace(/-section$/, '');
 		
 								// Index section? Clear.
-									if (id == 'home')
+									if (id == 'about')
 										id = '';
 		
 							// Reset hash to section name (via new state).
@@ -1093,7 +1099,7 @@
 							}
 		
 						// Section.
-							else if (e = $('#' + (h ? h : 'home') + '-section')) {
+							else if (e = $('#' + (h ? h : 'about') + '-section')) {
 		
 								initialScrollPoint = null;
 								initialSection = e;
@@ -1106,7 +1112,7 @@
 		
 								// Default to index.
 									initialScrollPoint = null;
-									initialSection = $('#' + 'home' + '-section');
+									initialSection = $('#' + 'about' + '-section');
 									initialId = initialSection.id;
 		
 								// Clear index URL hash.
@@ -1115,7 +1121,7 @@
 							}
 		
 					// Get options.
-						name = (h ? h : 'home');
+						name = (h ? h : 'about');
 						hideHeader = name ? ((name in sections) && ('hideHeader' in sections[name]) && sections[name].hideHeader) : false;
 						hideFooter = name ? ((name in sections) && ('hideFooter' in sections[name]) && sections[name].hideFooter) : false;
 						disableAutoScroll = name ? ((name in sections) && ('disableAutoScroll' in sections[name]) && sections[name].disableAutoScroll) : false;
@@ -1141,7 +1147,7 @@
 								}
 		
 						// Deactivate.
-							ee = $$('#main > .inner > section:not([id="' + initialId + '"])');
+							ee = $$('.site-main > .inner > section:not([id="' + initialId + '"])');
 		
 							for (k = 0; k < ee.length; k++) {
 		
@@ -1211,7 +1217,7 @@
 							}
 		
 						// Section.
-							else if (e = $('#' + (h ? h : 'home') + '-section')) {
+							else if (e = $('#' + (h ? h : 'about') + '-section')) {
 		
 								scrollPoint = null;
 								section = e;
@@ -1223,7 +1229,7 @@
 		
 								// Default to index.
 									scrollPoint = null;
-									section = $('#' + 'home' + '-section');
+									section = $('#' + 'about' + '-section');
 		
 								// Clear index URL hash.
 									history.replaceState(undefined, undefined, '#');
@@ -1408,8 +1414,8 @@
 		
 					})();
 		
-				// Apply "is-touch" class to body.
-					$body.classList.add('is-touch');
+				// Apply "touch" class to body.
+					$body.classList.add('touch');
 		
 			}
 		
@@ -1454,8 +1460,8 @@
 		
 						})();
 		
-				// Apply "is-touch" class to body.
-					$body.classList.add('is-touch');
+				// Apply "touch" class to body.
+					$body.classList.add('touch');
 		
 			}
 	
@@ -2012,9 +2018,9 @@
 		
 			// Build element.
 				$modal = document.createElement('div');
-					$modal.id = this.id + '-modal';
+					$modal.id = this.id + '-component-modal';
 					$modal.tabIndex = -1;
-					$modal.className = 'gallery-modal';
+					$modal.className = 'gallery-component-modal';
 					$modal.innerHTML = '<div class="inner"><img src="" /></div><div class="caption"></div><div class="nav previous"></div><div class="nav next"></div><div class="close"></div>';
 					$body.appendChild($modal);
 		
