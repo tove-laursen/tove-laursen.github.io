@@ -413,14 +413,20 @@
 					// Step through list.
 						for (i=0; i < a.length; i++) {
 		
+							// Clone IFRAME node.
+								x = a[i].cloneNode();
+		
 							// Load.
-								a[i].contentWindow.location.replace(a[i].dataset.src);
+								x.setAttribute('src', x.dataset.src);
 		
 							// Save initial src.
-								a[i].dataset.initialSrc = a[i].dataset.src;
+								x.dataset.initialSrc = x.dataset.src;
 		
 							// Mark as loaded.
-								a[i].dataset.src = '';
+								x.dataset.src = '';
+		
+							// Replace original IFRAME node with clone node.
+								a[i].replaceWith(x);
 		
 						}
 		
@@ -934,7 +940,7 @@
 								locked = true;
 		
 							// Clear index URL hash.
-								if (location.hash == '#about')
+								if (location.hash == '#projects')
 									history.replaceState(null, null, '#');
 		
 							// Get options.
@@ -1059,7 +1065,7 @@
 								id = section.id.replace(/-section$/, '');
 		
 								// Index section? Clear.
-									if (id == 'about')
+									if (id == 'projects')
 										id = '';
 		
 							// Reset hash to section name (via new state).
@@ -1099,7 +1105,7 @@
 							}
 		
 						// Section.
-							else if (e = $('#' + (h ? h : 'about') + '-section')) {
+							else if (e = $('#' + (h ? h : 'projects') + '-section')) {
 		
 								initialScrollPoint = null;
 								initialSection = e;
@@ -1112,7 +1118,7 @@
 		
 								// Default to index.
 									initialScrollPoint = null;
-									initialSection = $('#' + 'about' + '-section');
+									initialSection = $('#' + 'projects' + '-section');
 									initialId = initialSection.id;
 		
 								// Clear index URL hash.
@@ -1121,7 +1127,7 @@
 							}
 		
 					// Get options.
-						name = (h ? h : 'about');
+						name = (h ? h : 'projects');
 						hideHeader = name ? ((name in sections) && ('hideHeader' in sections[name]) && sections[name].hideHeader) : false;
 						hideFooter = name ? ((name in sections) && ('hideFooter' in sections[name]) && sections[name].hideFooter) : false;
 						disableAutoScroll = name ? ((name in sections) && ('disableAutoScroll' in sections[name]) && sections[name].disableAutoScroll) : false;
@@ -1217,7 +1223,7 @@
 							}
 		
 						// Section.
-							else if (e = $('#' + (h ? h : 'about') + '-section')) {
+							else if (e = $('#' + (h ? h : 'projects') + '-section')) {
 		
 								scrollPoint = null;
 								section = e;
@@ -1229,7 +1235,7 @@
 		
 								// Default to index.
 									scrollPoint = null;
-									section = $('#' + 'about' + '-section');
+									section = $('#' + 'projects' + '-section');
 		
 								// Clear index URL hash.
 									history.replaceState(undefined, undefined, '#');
@@ -1758,10 +1764,10 @@
 		
 						setTimeout(function() {
 		
-							// Clear background image.
-								i.style.backgroundImage = 'none';
+							// Clear parent frame's background image.
+								p.style.backgroundImage = 'none';
 		
-							// Clear transition properties.
+							// Clear image's transition properties.
 								i.style.transitionProperty = '';
 								i.style.transitionTimingFunction = '';
 								i.style.transitionDuration = '';

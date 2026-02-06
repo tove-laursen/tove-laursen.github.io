@@ -661,7 +661,7 @@ body.is-instant::after {
 
 .buttons-component.style-1 > li > a:hover {
 	background-color: #CCF1FF !important;
-	transform: rotate(-3deg);
+	transform: scale(1.025);
 }
 
 .buttons-component.style-2 {
@@ -714,7 +714,7 @@ body.is-instant::after {
 
 .buttons-component.style-2 > li > a:hover {
 	background-color: #CCF1FF !important;
-	transform: rotate(-3deg);
+	transform: scale(1.025);
 }
 
 .buttons-component.style-3 {
@@ -746,7 +746,7 @@ body.is-instant::after {
 
 .buttons-component.style-3 > li > a:hover {
 	background-color: #CCF1FF !important;
-	transform: rotate(-3deg);
+	transform: scale(1.025);
 }
 
 .container-component {
@@ -1572,7 +1572,7 @@ body.is-instant::after {
 }
 
 .gallery-component.instance-1 ul > li > .thumbnail:hover {
-	transform: rotate(-3deg);
+	transform: scale(1.025);
 	z-index: 1;
 }
 
@@ -1620,7 +1620,7 @@ body.is-instant::after {
 }
 
 .gallery-component.instance-2 ul > li > .thumbnail:hover {
-	transform: rotate(-3deg);
+	transform: scale(1.025);
 	z-index: 1;
 }
 
@@ -1668,7 +1668,7 @@ body.is-instant::after {
 }
 
 .gallery-component.instance-4 ul > li > .thumbnail:hover {
-	transform: rotate(-3deg);
+	transform: scale(1.025);
 	z-index: 1;
 }
 
@@ -1719,7 +1719,7 @@ body.is-instant::after {
 }
 
 .gallery-component.instance-3 ul > li > .thumbnail:hover {
-	transform: rotate(-3deg);
+	transform: scale(1.025);
 	z-index: 1;
 }
 
@@ -1767,7 +1767,7 @@ body.is-instant::after {
 }
 
 .gallery-component.instance-5 ul > li > .thumbnail:hover {
-	transform: rotate(-3deg);
+	transform: scale(1.025);
 	z-index: 1;
 }
 
@@ -1818,7 +1818,7 @@ body.is-instant::after {
 }
 
 .gallery-component.instance-6 ul > li > .thumbnail:hover {
-	transform: rotate(-3deg);
+	transform: scale(1.025);
 	z-index: 1;
 }
 
@@ -1869,7 +1869,7 @@ body.is-instant::after {
 }
 
 .gallery-component.instance-7 ul > li > .thumbnail:hover {
-	transform: rotate(-3deg);
+	transform: scale(1.025);
 	z-index: 1;
 }
 
@@ -2384,7 +2384,7 @@ body.is-instant::after {
 
 .icons-component.style-1 > li > a:hover {
 	background-color: #CCF1FF !important;
-	transform: rotate(-9deg);
+	transform: scale(1.025);
 }
 
 .icons-component.style-1 > li > a + svg {
@@ -2392,7 +2392,7 @@ body.is-instant::after {
 }
 
 .icons-component.style-1 > li > a:hover + svg {
-	transform: rotate(-9deg);
+	transform: scale(1.025);
 }
 
 @media (orientation: portrait) {
